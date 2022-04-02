@@ -1,0 +1,22 @@
+dalnoBOYshchick simulator
+////
+class storage:
+1. coords 
+2. name
+3. type  
+4. queue
+////
+class truck:
+1. id 
+2. V 
+3. capacity 
+4. loaded
+////
+class posilka:
+1. mass 
+2. dest 
+3. origin
+4. status  
+////
+
+if car full >= 90 full start 
