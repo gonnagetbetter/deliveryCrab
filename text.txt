@@ -1,22 +1,29 @@
 dalnoBOYshchick simulator
 ////
+IDEAS
+if car full >= 90 full start 
+cancel parcel
+////
 class storage:
 1. coords 
 2. name
 3. type  
 4. queue
+5. tempStorage
+6. Trucks 
 ////
 class truck:
 1. id 
 2. V 
 3. capacity 
 4. loaded
+5. route 
+6. parcel(id's)
 ////
 class posilka:
 1. mass 
 2. dest 
 3. origin
 4. status  
+5. id 
 ////
-
-if car full >= 90 full start 
