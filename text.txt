@@ -1,16 +1,22 @@
+'use Assом';
+
 dalnoBOYshchick simulator
 ////
 IDEAS
 if car full >= 90 full start 
 cancel parcel
 ////
+PROBLEMS
+Timer/async
+browser/graphics 
+////
 class storage:
 1. coords 
 2. name
 3. type  
-4. queue
-5. tempStorage
-6. Trucks 
+4. tempStorage
+5. Trucks 
+6. id
 ////
 class truck:
 1. id 
@@ -26,4 +32,49 @@ class posilka:
 3. origin
 4. status  
 5. id 
+//////////////////////////////////////
+
+class Storage 
+properties:
+1.id 
+2.name  
+3.coords 
+4.trucks
+5.tempStorage
+methods: 
+1.remTruck
+2.addTruck
+3.addParcel
+4.removeParcel 
+/////
+class Parcel
+properties:
+1.id 
+2.mass
+3.origin
+4.dest
+5.route
+6.status 
+methods:
+1.createRoute 
+2.getStatus
+3.setStatus
+/////
+class Truck 
+properties:
+1.id
+2.capacity
+3.loaded
+4.parcelStorage
+5.velocity 
+6.destination
+7.status 
+methods:
+1.addParcel
+2.empty
+3.setDest 
+4.setStatus
+5.getStatus
+/////
+uber_classs
 ////
