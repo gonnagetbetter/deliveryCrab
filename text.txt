@@ -5,10 +5,11 @@ dalnoBOYshchick simulator
 IDEAS
 if car full >= 90 full start 
 cancel parcel
+proxy id counter 
 ////
 PROBLEMS
 Timer/async
-browser/graphics 
+browser
 ////
 class storage:
 1. coords 
