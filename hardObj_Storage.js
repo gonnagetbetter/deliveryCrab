@@ -4,7 +4,6 @@ const createStorage = (xPos, yPos, id) => {
     let [truckNum, parcelNum] = [0, 0];
     const [truckMaxNum, parcelMaxNum] = [3, 100];
     return Object.freeze({
-
         get Info() {
             return `ID:${id}, Coords:${xPos},${yPos}`
         },
