@@ -2,23 +2,25 @@
 
 class Storage {
     
-    truckNum = 0;
-    parcelNum = 0;
+    #truckNum = 0;
+    #parcelNum = 0;
+    
+    get parcelNum() { return this.#parcelNum }
 
     addTruck() {
-        if (this.truckNum < this.truckMaxNum) { this.truckNum++ };
+        if (this.#truckNum < this.truckMaxNum) { this.#truckNum++ };
     }
 
     remTruck() {
-        if (this.truckNum) { this.truckNum-- }
+        if (this.#truckNum) { this.#truckNum-- }
     }
 
     addParcel() {
-        if (this.parcelNum < this.parcelMaxNum) {this.parcelNum++};
+        if (this.#parcelNum < this.parcelMaxNum) {this.#parcelNum++};
     }
     
     remParcel() {
-        if (this.parcelNum) { this.parcelNum-- }
+        if (this.#parcelNum) { this.#parcelNum-- }
     }
 }
 
@@ -47,21 +49,13 @@ class BigStorage extends Storage {
 }
 
 
-/*
+
 const MyStorage = new MiddleStorage(1,2,1011);
 MyStorage.addParcel()
 MyStorage.addParcel()
 MyStorage.addParcel()
 MyStorage.addParcel()
+//MyStorage.parcelNum = 69; //Error
+//MyStorage.id = 777; //Isnt error!!!!
 console.log(MyStorage.parcelNum);
-*/
-
-
-
-/*
-    addParcel(n=1) {
-        if (this.parcelNum < this.parcelMaxNum) {
-            this.parcelNum += this.Parcel*n;
-        };
-    }   !!!нужна проверка вместимости на выходе, неудобно.
-*/
+console.log(MyStorage.id);
