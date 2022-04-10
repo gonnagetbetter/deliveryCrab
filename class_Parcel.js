@@ -1,15 +1,17 @@
 'use strict';
 
+import deliverySystem from 'main.js';
+
 class Parcel {
-    constructor(id, mass, origin, dest) {
+    constructor(id, mass, origin, dest) { //origin and dest must contain IDs, not names!
         this.id = id;
         this.mass =  mass;
         this.dest = " " +dest;//будет браться автоматически от Storage в момент создания посылки
-        this.status = "Vaiting";
+        this.status = "waiting";
         this.origin = " " + origin;
     }
     createRout() {
-        //doSmth
+      //aboba
     }
     get status() { return this.status }
     set status(value) {
