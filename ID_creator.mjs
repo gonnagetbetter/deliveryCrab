@@ -18,7 +18,7 @@ class idProcessor {
 
   generateTruckId() {
     const result = this.nextTruck;
-    this.nextTruck = idIncrement(this.nextParsel);
+    this.nextTruck = idIncrement(this.nextTruck);
     return result;
   }
 
@@ -38,8 +38,4 @@ class idProcessor {
   }
 }
 
-let idMaker = new idProcessor();
-console.log(idMaker.generateParselId());
-console.log(idMaker.generateParselId());
-console.log(idMaker.generateDepotId(0, 'ha135'));
-console.log(idMaker.generateDepotId(1));
+export let idMaker = new idProcessor();
