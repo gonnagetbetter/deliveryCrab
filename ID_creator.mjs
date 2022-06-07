@@ -18,7 +18,7 @@ class idProcessor {
 
   generateTruckId() {
     const result = this.nextTruck;
-    this.nextTruck = idIncrement(this.nextParsel);
+    this.nextTruck = idIncrement(this.nextTruck);
     return result;
   }
 
