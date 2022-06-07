@@ -1,28 +1,54 @@
 'use strict';
 
-import deliverySystem from 'main.js';
+//import deliverySystem from 'main.js';
 
 class Parcel {
-    constructor(id, mass, origin, dest) { //origin and dest must contain IDs, not names!
-        this.id = id;
-        this.mass =  mass;
-        this.dest = " " +dest;//будет браться автоматически от Storage в момент создания посылки
-        this.status = "waiting";
-        this.origin = " " + origin;
-    }
-    createRout() {
-      //aboba
-    }
-    get status() { return this.status }
-    set status(value) {
-        this.status = value;
-    }
-    get Info() { return `ID:${this.id}, Status:${this.status}` }
-}
+  constructor(mass, origin, destination) { //origin and destination must contain IDs, not names!
+    this.mass =  mass;
+    this.status = 'waiting';
+    this.route;
+    this.origin = origin;
+    this.dest = destination;
+  }
 
-const myParcel = new Parcel(1034,30,"Ternopil");
-//myParcel.setStatus("ready");
-myParcel.status = "ready";  
-//Нужно закрыть класс от лишнего внешнего воздействия
-console.log(myParcel.Info);
- 
+  createRoute() {
+    const orig = this.origin;
+    const dest = this.dest;
+    const route = [];
+    if (orig === dest) {
+      console.log('Origin and destination are the same!');
+    } else {
+      const originHub = 'h' + orig.slice(1, 5);
+      const destHub = 'h' + dest.slice(1, 5);
+      if (originHub === destHub) {
+        route.push(orig, dest);
+      } else {
+        if (orig[0] === 'r') {
+          route.push(orig);
+          route.push(originHub);
+        } else {
+          route.push(orig);
+        }
+        if (dest[0] === 'r') {
+          route.push(destHub);
+          route.push(dest);
+        } else {
+          route.push(dest);
+        }
+      }
+    }
+    this.route = route;
+  }
+
+  getStatus() {
+    return this.status;
+  }
+
+  setStatus(value) {
+    this.status = value;
+  }
+
+  getInfo() {
+    return `ID:${this.id}, Status:${this.status}`;
+  }
+}
