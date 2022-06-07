@@ -2,8 +2,11 @@
 
 import Truck from 'class_Truck.js';
 import Storage from 'class_Storage.js';
+import idMaker from 'ID_creator.js';
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
+const CAPACITY = 1500; //standard truck capacity
+const VELOCITY = 60; //standard truck velocity
 
 class Main {
   constructor() {
@@ -12,21 +15,24 @@ class Main {
     this.depots = new Map;
   }
 
-  createDepot(name, size, hub, x, y) { //size - hub/not hub, hub - connected hub. Both used to create proper ID
-    const ID = 'aboba' //add ID creator
+  createDepot(name, x, y, type, hub = '') { //type - 0 for regular storage, 1 for hub. Hub - connected hub ID; don`t use if creating a hub 
+    const ID = idMaker.generateDepotId(type, hub);
     const depot = new Storage(x, y, name);
     this.depots.set(ID, depot);
   }
 
   spawnTrucks(trucksMax) {
-    for (depot in depots) {
-      //put random from 0 to trucksCeiling trucks in every depot
+    for (let depotId of this.depots.keys()) {
+      let depot = this.depots.get(depotId);
+      const quantity = randInt(0, trucksMax);
+      for (let i = 0; i < quantity; i++) {
+        const truck = new Truck(CAPACITY, VELOCITY, 'some dest');
+        const id = idMaker.generateTruckId();
+        depot.addTruck(id);
+        this.trucks.set(id, truck);
+      }
     }
   }
-    //hesh cities
-    //hesh trucks
-    //hesh parcels
-
 }
 
 const deliverySystem = new Main;
