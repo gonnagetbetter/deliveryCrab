@@ -1,42 +1,45 @@
-'use strict'
+'use strict';
 
 class Storage {
   constructor(xPos, yPos, name) {
     this.xPos = xPos;
     this.yPos = yPos;
     this.name = name;
-    this.trucks = [];
-  }
-    
-  get parcelNum() { 
-    return this.parcelNum
+    this.trucks = []; //conatains trucks` IDs
+    this.parcels = []; //contains parcels` IDs; works as a stack
   }
 
-  addTruck() {
-    if (this.truckNum < this.truckMaxNum) { 
-      this.truckNum++
-    };
+  addTruck(id) {
+    if (!this.trucks.includes(id)) {
+      this.trucks.push(id);
+    } else {
+      console.log('This truck is already in this depot'); //should add proper error handling
+    }
   }
 
-  remTruck() {
-    if (this.truckNum) { this.truckNum-- }
+  removeTruck(id) {
+    const position = this.trucks.indexOf(id);
+    if (position) {
+      this.trucks.splice(position, 1);
+    } else {
+      console.log('This truck does not exist or is not in this depot'); //should add proper error handling
+    }
   }
 
-  addParcel() {
-    if (this.parcelNum < this.parcelMaxNum) {this.parcelNum++};
+  unshiftParcel(id) {
+    if (!this.parcels.includes(id)) {
+      this.parcels.unshift(id);
+    } else {
+      console.log('This parcel is already in this storage'); //should add proper error handling
+    }
   }
-    
-  remParcel() {
-    if (this.parcelNum) { this.parcelNum-- }
+
+  popParcel() {
+    const parcel = this.parcels.pop();
+    if (parcel) {
+      return parcel;
+    } else {
+      console.log('This storage is empty!'); //should add proper error handling
+    }
   }
 }
-
-const MyStorage = new MiddleStorage(1,2,1011);
-MyStorage.addParcel()
-MyStorage.addParcel()
-MyStorage.addParcel()
-MyStorage.addParcel()
-//MyStorage.parcelNum = 69; //Error
-//MyStorage.id = 777; //Isnt error!!!!
-console.log(MyStorage.parcelNum);
-console.log(MyStorage.id);
