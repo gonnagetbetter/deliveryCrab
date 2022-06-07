@@ -1,0 +1,22 @@
+{
+  "name": "deliverycrab",
+  "version": "1.0.0",
+  "description": "Kyrsach",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegKorniychuk/deliveryCrab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegKorniychuk/deliveryCrab/issues"
+  },
+  "homepage": "https://github.com/OlegKorniychuk/deliveryCrab#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0"
+  }
+}
