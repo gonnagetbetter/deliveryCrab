@@ -44,4 +44,4 @@ console.log(idMaker.generateParselId());
 console.log(idMaker.generateDepotId(0, 'ha135'));
 console.log(idMaker.generateDepotId(1));
 
-module.exports = { idProcessor };
+module.exports = idProcessor;

@@ -36,3 +36,5 @@ class Main {
 }
 
 const deliverySystem = new Main;
+
+module.exports = deliverySystem;
