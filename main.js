@@ -1,8 +1,8 @@
 'use strict';
 
-import Truck from 'class_Truck.js';
-import Storage from 'class_Storage.js';
-import idMaker from 'ID_creator.js';
+const Truck = require('./class_Truck');
+const Storage = require('./class_Storage');
+const idMaker = require('./ID_creator');
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 1500; //standard truck capacity
@@ -36,3 +36,5 @@ class Main {
 }
 
 const deliverySystem = new Main;
+
+module.exports = deliverySystem;

@@ -30,3 +30,5 @@ class Truck {
     this.parcelStorage = [];
   }
 }
+
+module.exports = Truck;

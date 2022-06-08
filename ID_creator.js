@@ -1,6 +1,6 @@
 'use strict';
 
-import { idIncrement } from './increment.mjs'
+const idIncrement = require('./increment.js');
 
 class idProcessor {
   constructor() {
@@ -43,3 +43,5 @@ console.log(idMaker.generateParselId());
 console.log(idMaker.generateParselId());
 console.log(idMaker.generateDepotId(0, 'ha135'));
 console.log(idMaker.generateDepotId(1));
+
+module.exports = idProcessor;
