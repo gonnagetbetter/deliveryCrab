@@ -1,6 +1,6 @@
 'use strict';
 
-//import * from database.js
+const database = require('./DataBase.js')
 
 class Truck {
   constructor(capacity, velocity) {
