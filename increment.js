@@ -15,7 +15,7 @@ function increment(array, index = array.length - 1) {
   }
 }
 
-export function idIncrement(id) {
+function idIncrement(id) {
   let letters = [];
   let numbers = '';
   for (let symbol of id) {
@@ -38,3 +38,5 @@ export function idIncrement(id) {
   const result = letters.join('') + numbers;
   return result;
 }
+
+module.exports =  idIncrement;

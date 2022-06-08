@@ -52,3 +52,5 @@ class Parcel {
     return `ID:${this.id}, Status:${this.status}`;
   }
 }
+
+module.exports = Parcel;
