@@ -1,5 +1,7 @@
 'use strict';
 
+//import * from database.js
+
 class Truck {
   constructor(capacity, velocity) {
     this.capacity = capacity;
@@ -20,6 +22,10 @@ class Truck {
 
   addParcel(id) {
     if (!this.parcelStorage.includes(id)) {
+      if (this.parcelStorage.length === 0) {
+        const parcel = database.parcels[id];
+        this.route = parcel.route.slice(0, 2);
+      }
       this.parcelStorage.push(id);
     } else {
       console.log('This parsel is already in this truck'); //should add proper error handling
