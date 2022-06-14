@@ -2,12 +2,12 @@
 
 const idIncrement = require('./increment.js');
 
-class idProcessor {
+class IdProcessor {
   constructor() {
     this.nextTruck = 'a000';
     this.nextHub = 'a000';
     this.nextStorage = 'a00';
-    this.nextParsel = 'aa000'; 
+    this.nextParsel = 'aa000';
   }
 
   generateParselId() {
@@ -22,12 +22,13 @@ class idProcessor {
     return result;
   }
 
-  generateDepotId(type, hub = '') { //type: 0 for regular storage, 1 for hub; hub takes hubId in form of string
+  generateDepotId(type, hub = '') {
+    //type: 0 for regular storage, 1 for hub; hub takes hubId in form of string
     let result;
-    if (type == 0) {
+    if (type === 0) {
       result = 'r' + hub.substring(1) + this.nextStorage;
-      this.nextStorage = idIncrement(this.nextStorage); 
-    } else if (type == 1) {
+      this.nextStorage = idIncrement(this.nextStorage);
+    } else if (type === 1) {
       result = 'h' + this.nextHub;
       this.nextHub = idIncrement(this.nextHub);
     } else {
@@ -38,6 +39,6 @@ class idProcessor {
   }
 }
 
-let idMaker = new idProcessor();
+const idMaker = new IdProcessor();
 
 module.exports = idMaker;
