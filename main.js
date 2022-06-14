@@ -33,8 +33,25 @@ class Main {
       }
     }
   }
-}
 
-const deliverySystem = new Main;
+  moveTruck(storage, truckId){
+    const depot = this.depots[storage];
+    depot.removeTruck(truckId);
+    const truck = this.trucks[truckId];
+    truck.deleteRoute();
+    truck.parcelStorage.shift();
+    // add truck to the destination point...
+    truck.empty();
+  }
+}
+const deliverySystem = new Main();
+
+deliverySystem.createDepot('first', 1, 1, 0);
+deliverySystem.spawnTrucks(3);
+// deliverySystem.moveTruck('ra00', 'a000');
+
+console.log(deliverySystem.depots);
+console.log(deliverySystem.trucks);
+
 
 module.exports = deliverySystem;
