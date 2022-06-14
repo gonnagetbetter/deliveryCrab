@@ -2,46 +2,27 @@
 
 class IdProcessor {
   constructor() {
-    this.alphabet = [
-      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-    ];
     this.nextTruck = 'a000';
     this.nextHub = 'a000';
     this.nextStorage = 'a00';
     this.nextParsel = 'aa000';
-    this.idIncrement = (id) => {
-      const increment = (array, index = array.length - 1) => {
-        if (array[index] === 'z') {
-          array[index] = 'a';
-          index--;
-          increment(array, index);
-        } else {
-          array[index] = this.alphabet[this.alphabet.indexOf(array[index]) + 1];
-        }
-      };
-      const letters = [];
-      let numbers = '';
-      for (const symbol of id) {
-        if (this.alphabet.includes(symbol)) {
-          letters.push(symbol);
-        } else {
-          numbers += symbol;
-        }
-      }
-      const numbersLength = numbers.length;
-      if (numbers === '9'.repeat(numbersLength)) {
-        numbers = '0'.repeat(numbersLength);
-        increment(letters);
+    this.idIncrement = (string, index = string.length - 1) => {
+      const array = Array.from(string);
+      let nextSymbol;
+      if (array[index] === 'z') {
+        nextSymbol = 'a';
+        array.splice(index, 1, nextSymbol);
+        this.idIncrement(array, --index);
+      } else if (array[index] === '9') {
+        nextSymbol = '0';
+        array.splice(index, 1, nextSymbol);
+        this.idIncrement(array, --index);
       } else {
-        numbers++;
-        while (numbers.toString().length < numbersLength) {
-          numbers = '0' + numbers;
-        }
+        nextSymbol = String.fromCharCode(array[index].charCodeAt(0) + 1);
+        array.splice(index, 1, nextSymbol);
       }
-      const result = letters.join('') + numbers;
-      return result;
-    };
+      return array.join('');
+    }
   }
 
   generateParselId() {
