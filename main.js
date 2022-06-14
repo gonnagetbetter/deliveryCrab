@@ -2,7 +2,7 @@
 
 const Truck = require('./components/class_Truck');
 const Storage = require('./components/class_Storage');
-const idMaker = require('./ID_creator/ID_creator');
+const idMaker = require('./components/ID_creator');
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 1500; //standard truck capacity
