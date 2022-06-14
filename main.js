@@ -10,20 +10,22 @@ const VELOCITY = 60; //standard truck velocity
 
 class Main {
   constructor() {
-    this.trucks = new Map;
-    this.parcels = new Map;
-    this.depots = new Map;
+    this.trucks = new Map();
+    this.parcels = new Map();
+    this.depots = new Map();
   }
 
-  createDepot(name, x, y, type, hub = '') { //type - 0 for regular storage, 1 for hub. Hub - connected hub ID; don`t use if creating a hub 
+  createDepot(name, x, y, type, hub = '') {
+    //type - 0 for regular storage, 1 for hub.
+    //Hub - connected hub ID; don`t use if creating a hub
     const ID = idMaker.generateDepotId(type, hub);
     const depot = new Storage(x, y, name);
     this.depots.set(ID, depot);
   }
 
   spawnTrucks(trucksMax) {
-    for (let depotId of this.depots.keys()) {
-      let depot = this.depots.get(depotId);
+    for (const depotId of this.depots.keys()) {
+      const depot = this.depots.get(depotId);
       const quantity = randInt(0, trucksMax);
       for (let i = 0; i < quantity; i++) {
         const truck = new Truck(CAPACITY, VELOCITY, 'some dest');
@@ -34,7 +36,7 @@ class Main {
     }
   }
 
-  moveTruck(storage, truckId){
+  moveTruck(storage, truckId) {
     const depot = this.depots[storage];
     depot.removeTruck(truckId);
     const truck = this.trucks[truckId];
