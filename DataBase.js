@@ -1,1 +1,0 @@
-const deliverySystem = require('./main');
