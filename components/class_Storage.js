@@ -26,7 +26,7 @@ class Storage {
     }
   }
 
-  unshiftParcel(id) {
+  addParcel(id) {
     if (!this.parcels.includes(id)) {
       this.parcels.unshift(id);
     } else {
@@ -34,7 +34,7 @@ class Storage {
     }
   }
 
-  popParcel() {
+  removeParcel() {
     const parcel = this.parcels.pop();
     if (parcel) {
       return parcel;
