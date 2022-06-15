@@ -19,7 +19,8 @@ class Storage {
 
   removeTruck(id) {
     const position = this.trucks.indexOf(id);
-    if (position) {
+    console.log(position);
+    if (position !== -1) {
       this.trucks.splice(position, 1);
     } else {
       console.log('This truck does not exist or is not in this depot'); //should add proper error handling
