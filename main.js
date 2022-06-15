@@ -33,6 +33,16 @@ class Main {
       }
     }
   }
+
+  moveTruck(storageID, truckID) {
+    const depot = this.depots.get(storageID);
+    const truck = this.trucks.get(truckID);
+    depot.removeTruck(truckID); //does not work for some reason;
+    truck.deleteRoute();
+    truck.parcelStorage.shift();
+    //add truck to the destination point...
+    truck.empty();
+  }
 }
 
 const deliverySystem = new Main;
