@@ -10,9 +10,9 @@ const VELOCITY = 60; //standard truck velocity
 
 class Main {
   constructor() {
-    this.trucks = new Map;
-    this.parcels = new Map;
-    this.depots = new Map;
+    this.trucks = new Map();
+    this.parcels = new Map();
+    this.depots = new Map();
   }
 
   createDepot(name, x, y, type, hub = '') { //type - 0 for regular storage, 1 for hub. Hub - connected hub ID; don`t use if creating a hub 
@@ -45,6 +45,6 @@ class Main {
   }
 }
 
-const deliverySystem = new Main;
+const deliverySystem = new Main();
 
 module.exports = deliverySystem;
