@@ -10,9 +10,9 @@ const VELOCITY = 60; //standard truck velocity
 
 class Main {
   constructor() {
-    this.trucks = new Map;
-    this.parcels = new Map;
-    this.depots = new Map;
+    this.trucks = new Map();
+    this.parcels = new Map();
+    this.depots = new Map();
   }
 
   createDepot(name, x, y, type, hub = '') { //type - 0 for regular storage, 1 for hub. Hub - connected hub ID; don`t use if creating a hub 
@@ -33,8 +33,18 @@ class Main {
       }
     }
   }
+
+  moveTruck(storageID, truckID) {
+    const depot = this.depots.get(storageID);
+    const truck = this.trucks.get(truckID);
+    depot.removeTruck(truckID); //does not work for some reason;
+    truck.deleteRoute();
+    truck.parcelStorage.shift();
+    //add truck to the destination point...
+    truck.empty();
+  }
 }
 
-const deliverySystem = new Main;
+const deliverySystem = new Main();
 
 module.exports = deliverySystem;

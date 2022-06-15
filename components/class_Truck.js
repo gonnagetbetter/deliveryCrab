@@ -32,6 +32,10 @@ class Truck {
     }
   }
 
+  deleteRoute() {
+    this.route = [];
+  }
+  
   empty() {
     this.parcelStorage = [];
   }
