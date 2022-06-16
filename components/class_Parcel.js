@@ -2,7 +2,6 @@
 
 class Parcel {
   constructor(mass, origin, destination) { //origin and destination must contain IDs, not names!
-    this.mass =  mass;
     this.status = 'waiting';
     this.route;
     this.origin = origin;
