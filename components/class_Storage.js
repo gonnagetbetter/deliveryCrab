@@ -43,6 +43,25 @@ class Storage {
       console.log('This storage is empty!'); //should add proper error handling
     }
   }
+  
+  startPath(id) {
+    const parcel = parcelsData.get(id);
+    for (carId in this.trucks) {
+      const currentTruck = trucksData.get(carId);
+      if (currentTruck.loaded = 0) {
+        const emptyTruck = currentTruck;
+      }
+      if (parcel.route[1] == currentTruck.route[1]) {
+        currentTruck.addParcel(id);
+        trucksData.set(carId, currentTruck);
+      return;
+      }
+    }
+    emptyTruck.addParcel(id);
+    emptyTruck.set(carId, currentTruck);
+} 
+
+
 }
 
 module.exports = Storage;
