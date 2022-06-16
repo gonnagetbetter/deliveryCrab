@@ -25,7 +25,7 @@ class IdProcessor {
     }
   }
 
-  generateParselId() {
+  generateParcelId() {
     const result = this.nextParsel;
     this.nextParsel = this.idIncrement(this.nextParsel);
     return result;
@@ -40,7 +40,7 @@ class IdProcessor {
   generateDepotId(type, hub = '') { //type: 0 for regular storage, 1 for hub; hub takes hubId in form of string
     let result;
     if (type === 0) {
-      result = 'r' + hub.substring(1) + this.nextStorage;
+      result = 'r' + hub.substring(0) + this.nextStorage;
       this.nextStorage = this.idIncrement(this.nextStorage);
     } else if (type === 1) {
       result = 'h' + this.nextHub;
