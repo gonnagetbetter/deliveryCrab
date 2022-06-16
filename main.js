@@ -3,6 +3,7 @@
 const Truck = require('./components/class_Truck');
 const Storage = require('./components/class_Storage');
 const idMaker = require('./components/ID_creator');
+const Parcel = require('./components/class_Parcel.js');
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 1500; //standard truck capacity
@@ -19,6 +20,12 @@ class Main {
     const ID = idMaker.generateDepotId(type, hub);
     const depot = new Storage(x, y, name);
     this.depots.set(ID, depot);
+  }
+
+  createParcel(origin, destination) { //origin and destination must contain IDs
+    const ID = idMaker.generateParcelId();
+    const newParcel = new Parcel(origin, destination);
+    this.parcels.set(ID, newParcel);
   }
 
   spawnTrucks(trucksMax) {
@@ -42,6 +49,8 @@ class Main {
     destination.trucks.push(truckID);
     truck.empty(destination);
   }
+
+
 }
 
 const deliverySystem = new Main();
