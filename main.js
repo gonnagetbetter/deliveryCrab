@@ -34,17 +34,24 @@ class Main {
     }
   }
 
-  moveTruck(storageID, truckID) {
+  moveTruck(storageID, truckID, destinationID) {
     const depot = this.depots.get(storageID);
     const truck = this.trucks.get(truckID);
-    depot.removeTruck(truckID); //does not work for some reason;
-    truck.deleteRoute();
-    truck.parcelStorage.shift();
-    //add truck to the destination point...
-    truck.empty();
+    const destination = this.depots.get(destinationID);
+    depot.removeTruck(truckID);
+    destination.trucks.push(truckID);
+    truck.empty(destination);
   }
 }
 
 const deliverySystem = new Main();
+
+deliverySystem.createDepot('first', 1, 1, 0);
+deliverySystem.spawnTrucks(5);
+deliverySystem.createDepot('second', 1, 1, 1);
+deliverySystem.moveTruck('ra00', 'a000', 'ha000');
+
+console.log(deliverySystem.depots);
+console.log(deliverySystem.trucks);
 
 module.exports = deliverySystem;

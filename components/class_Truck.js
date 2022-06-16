@@ -29,14 +29,10 @@ class Truck {
     }
   }
 
-  deleteRoute() {
-    this.route = [];
+  empty(destination) {
+    this.route = []; //deletes truck's route
+    destination.parcels = [...this.parcelStorage];
   }
-  
-  empty() {
-    this.parcelStorage = [];
-  }
-
 }
 
 module.exports = Truck;
