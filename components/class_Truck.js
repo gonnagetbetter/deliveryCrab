@@ -13,16 +13,17 @@ class Truck {
   }
 
   addParcel(id) {
-    const percent = this.parcelStorage.length/this.capacity;
-    console.log(percent);
+    
+    
     if (!this.parcelStorage.includes(id) && this.parcelStorage.length < this.capacity) {
       if (this.parcelStorage.length === 0) {
         const parcel = database.parcels[id];
         this.route = parcel.route.slice(0, 2);
       }
       this.parcelStorage.push(id);
-      if ( percent >= 0.9) {
-        this.status = (percent == 1) ? "ready100": "ready90";/*moveTruck()*///doesnt work with 1
+      const percent = this.parcelStorage.length/this.capacity;
+      if (percent >= 0.9) {
+        this.status = (percent == 1) ? "ready100": "ready90";
       };
     } else {
       console.log(`Parsel "${id}" is already in a truck or there is no space`); //should add proper error handling
