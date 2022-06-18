@@ -1,6 +1,6 @@
 'use strict';
 
-const database = require('../DataBase/DataBase.js')
+const dataBase = require('../DataBase/DataBase.js')
 
 class Truck {
   constructor(capacity, velocity) {
@@ -15,18 +15,10 @@ class Truck {
   addParcel(id) {
     if (!this.parcelStorage.includes(id) && this.parcelStorage.length < this.capacity) {
       if (this.parcelStorage.length === 0) {
-        const parcel = database.parcels[id];
+        const parcel = dataBase.parcelsData.get(id);
         this.route = parcel.route.slice(0, 2);
       }
       this.parcelStorage.push(id);
-      const percent = this.parcelStorage.length/this.capacity;
-      if (percent >= 0.9) {
-        this.status = (percent == 1) ? "ready100": "ready90";
-      };
-    } else {
-      console.log(`Parsel "${id}" is already in a truck or there is no space`); 
-      //should add proper error handling
-    }
   }
 
   empty(destination) {
