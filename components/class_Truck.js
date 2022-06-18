@@ -22,9 +22,11 @@ class Truck {
     }
   }
 
-  empty(destination) {
+  unloadTruck(destination) {
     this.route = []; //deletes truck's route
-    destination.parcels = [...this.parcelStorage];
+    for (parcel in this.parcelStorage) {
+      destination.parcels.push(parcel);
+    }
   }
 }
 
