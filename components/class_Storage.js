@@ -66,7 +66,6 @@ class Storage {
       }
     }
     emptyTruck.addParcel(id);
-    dataBase.trucksData.set(emptyId, emptyTruck);
 }
 
 
