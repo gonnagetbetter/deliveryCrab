@@ -47,7 +47,7 @@ class Storage {
     }
   }
 
-  startPath(id) {
+  loadParcel(id) {
     const parcel = parcelsData.get(id);
     for (carId in this.trucks) {
       const currentTruck = trucksData.get(carId);
