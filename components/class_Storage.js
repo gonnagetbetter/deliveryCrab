@@ -1,5 +1,7 @@
 'use strict';
 
+const dataBase = require('../DataBase/DataBase.js');
+
 class Storage {
   constructor(xPos, yPos, name) {
     this.xPos = xPos;
@@ -48,20 +50,22 @@ class Storage {
   }
 
   loadParcel(id) {
-    const parcel = parcelsData.get(id);
-    for (carId in this.trucks) {
-      const currentTruck = trucksData.get(carId);
-      if (currentTruck.loaded = 0) {
-        const emptyTruck = currentTruck;
+    const parcel = dataBase.parcelsData.get(id);
+    let emptyTruck;
+    let emptyId;
+    for (const carId of this.trucks) {
+      const currentTruck = dataBase.trucksData.get(carId);
+      if (!emptyTruck && currentTruck.loaded == 0) {
+        emptyTruck = currentTruck;
+        emptyId = carId;
       }
       if (parcel.route[1] == currentTruck.route[1]) {
         currentTruck.addParcel(id);
-        trucksData.set(carId, currentTruck);
+        dataBase.trucksData.set(carId, currentTruck);
         return;
       }
     }
     emptyTruck.addParcel(id);
-    emptyTruck.set(carId, currentTruck);
 }
 
 

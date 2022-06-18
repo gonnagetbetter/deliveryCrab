@@ -22,7 +22,11 @@ class Main {
   createParcel(origin, destination) { //origin and destination must contain IDs
     const ID = idMaker.generateParcelId();
     const newParcel = new Parcel(origin, destination);
+    newParcel.createRoute()
     dataBase.parcelsData.set(ID, newParcel);
+    const originStorage = dataBase.depotsData.get(origin);
+    originStorage.addParcel(ID);
+    originStorage.loadParcel(ID);
   }
 
   spawnTrucks(trucksMax) {
