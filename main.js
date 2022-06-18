@@ -16,7 +16,9 @@ class Main {
     this.depots = new Map();
   }
 
-  createDepot(name, x, y, type, hub = '') { //type - 0 for regular storage, 1 for hub. Hub - connected hub ID; don`t use if creating a hub 
+  createDepot(name, x, y, type, hub = '') { 
+    //type - 0 for regular storage, 1 for hub. Hub - connected hub ID;
+    //don`t use if creating a hub
     const ID = idMaker.generateDepotId(type, hub);
     const depot = new Storage(x, y, name);
     this.depots.set(ID, depot);

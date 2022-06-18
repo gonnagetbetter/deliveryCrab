@@ -37,7 +37,8 @@ class IdProcessor {
     return result;
   }
 
-  generateDepotId(type, hub = '') { //type: 0 for regular storage, 1 for hub; hub takes hubId in form of string
+  generateDepotId(type, hub = '') { 
+    //type: 0 for regular storage, 1 for hub; hub takes hubId in form of string
     let result;
     if (type === 0) {
       result = 'r' + hub.substring(0) + this.nextStorage;

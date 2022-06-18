@@ -13,8 +13,6 @@ class Truck {
   }
 
   addParcel(id) {
-    
-    
     if (!this.parcelStorage.includes(id) && this.parcelStorage.length < this.capacity) {
       if (this.parcelStorage.length === 0) {
         const parcel = database.parcels[id];
@@ -26,7 +24,8 @@ class Truck {
         this.status = (percent == 1) ? "ready100": "ready90";
       };
     } else {
-      console.log(`Parsel "${id}" is already in a truck or there is no space`); //should add proper error handling
+      console.log(`Parsel "${id}" is already in a truck or there is no space`); 
+      //should add proper error handling
     }
   }
 

@@ -1,7 +1,8 @@
 'use strict';
 
 class Parcel {
-  constructor(origin, destination) { //origin and destination must contain IDs, not names!
+  constructor(origin, destination) { 
+    //origin and destination must contain IDs, not names!
     this.status = 'waiting';
     this.route;
     this.origin = origin;
