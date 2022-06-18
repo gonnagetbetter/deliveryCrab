@@ -19,6 +19,7 @@ class Truck {
         this.route = parcel.route.slice(0, 2);
       }
       this.parcelStorage.push(id);
+    }
   }
 
   empty(destination) {
