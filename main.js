@@ -1,5 +1,6 @@
 'use strict';
 
+const Parcel = require('./components/class_Parcel.js');
 const Truck = require('./components/class_Truck');
 const Storage = require('./components/class_Storage');
 const idMaker = require('./components/ID_creator');
@@ -25,14 +26,14 @@ class Main {
   }
 
   spawnTrucks(trucksMax) {
-    for (const depotId of dataBase.depots.keys()) {
-      const depot = dataBase.depots.get(depotId);
+    for (const depotId of dataBase.depotsData.keys()) {
+      const depot = dataBase.depotsData.get(depotId);
       const quantity = randInt(0, trucksMax);
       for (let i = 0; i < quantity; i++) {
         const truck = new Truck(CAPACITY, VELOCITY, 'some dest');
         const id = idMaker.generateTruckId();
         depot.addTruck(id);
-        dataBase.trucks.set(id, truck);
+        dataBase.trucksData.set(id, truck);
       }
     }
   }
@@ -50,13 +51,5 @@ class Main {
 }
 
 const deliverySystem = new Main();
-
-deliverySystem.createDepot('first', 1, 1, 0);
-deliverySystem.spawnTrucks(5);
-deliverySystem.createDepot('second', 1, 1, 1);
-deliverySystem.moveTruck('ra00', 'a000', 'ha000');
-
-console.log(deliverySystem.depots);
-console.log(deliverySystem.trucks);
 
 module.exports = deliverySystem;
