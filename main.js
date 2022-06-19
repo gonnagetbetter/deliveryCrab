@@ -33,7 +33,8 @@ class Main {
     for (const depotId of dataBase.depotsData.keys()) {
       const depot = dataBase.depotsData.get(depotId);
       const quantity = randInt(0, trucksMax);
-      for (let i = 0; i < quantity; i++) {
+      for (let i = 0; i < 1; i++) { 
+        //it now spawns one truck in every depot. i < quantity - release version
         const truck = new Truck(CAPACITY, VELOCITY, 'some dest');
         const id = idMaker.generateTruckId();
         depot.addTruck(id);

@@ -64,11 +64,13 @@ class Storage {
         suitableTruckId = currentId;
       }
     }
-    suitableTruck.addParcel(id);
-    this.parcels.splice(id);
-    if (suitableTruck.status === 'ready') {
-      suitableTruck.status = 'not ready';
-      this.moveTruck(suitableTruckId);
+    if (suitableTruck) {
+      suitableTruck.addParcel(id);
+      this.parcels.splice(id);
+      if (suitableTruck.status === 'ready') {
+        suitableTruck.status = 'not ready';
+        this.moveTruck(suitableTruckId);
+      }
     }
   }
 
