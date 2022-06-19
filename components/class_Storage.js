@@ -52,20 +52,20 @@ class Storage {
   loadParcel(id) {
     const parcel = dataBase.parcelsData.get(id);
     let emptyTruck;
-    let emptyId;
     for (const carId of this.trucks) {
       const currentTruck = dataBase.trucksData.get(carId);
       if (!emptyTruck && currentTruck.loaded == 0) {
         emptyTruck = currentTruck;
-        emptyId = carId;
       }
       if (parcel.route[1] == currentTruck.route[1]) {
         currentTruck.addParcel(id);
         dataBase.trucksData.set(carId, currentTruck);
+        this.parcels.splice(id);
         return;
       }
     }
     emptyTruck.addParcel(id);
+    this.parcels.splice(id);
 }
 
 
