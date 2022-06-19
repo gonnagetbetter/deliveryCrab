@@ -9,7 +9,6 @@ class Truck {
     this.status = "undefined"; 
     this.route = [];
     this.parcelStorage = [];
-    this.loaded = this.parcelStorage.length;
   }
 
   addParcel(id) {
@@ -19,14 +18,19 @@ class Truck {
         this.route = parcel.route.slice(0, 2);
       }
       this.parcelStorage.push(id);
+      if (this.parcelStorage.length === this.capacity) {
+        this.status = 'ready';
+      }
     }
   }
 
-  unloadTruck(destination) {
+  unload(destination) {
+    const destinationStorage = dataBase.depotsData.get(destination);
     this.route = []; //deletes truck's route
-    for (parcel in this.parcelStorage) {
-      destination.parcels.push(parcel);
+    for (const parcel of this.parcelStorage) {
+      destinationStorage.addParcel(parcel);
     }
+    this.parcelStorage.length = 0;
   }
 }
 
