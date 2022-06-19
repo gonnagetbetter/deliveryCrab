@@ -7,7 +7,7 @@ const idMaker = require('./components/ID_creator');
 const dataBase = require('./DataBase/DataBase.js');
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
-const CAPACITY = 1500; //standard truck capacity
+const CAPACITY = 2; //standard truck capacity
 const VELOCITY = 60; //standard truck velocity
 
 class Main {
@@ -22,7 +22,7 @@ class Main {
   createParcel(origin, destination) { //origin and destination must contain IDs
     const ID = idMaker.generateParcelId();
     const newParcel = new Parcel(origin, destination);
-    newParcel.createRoute()
+    newParcel.createRoute();
     dataBase.parcelsData.set(ID, newParcel);
     const originStorage = dataBase.depotsData.get(origin);
     originStorage.addParcel(ID);
@@ -41,17 +41,6 @@ class Main {
       }
     }
   }
-
-  moveTruck(storageID, truckID, destinationID) {
-    const depot = dataBase.depotsData.get(storageID);
-    const truck = dataBase.trucksData.get(truckID);
-    const destination = dataBase.depotsData.get(destinationID);
-    depot.removeTruck(truckID);
-    destination.trucks.push(truckID);
-    truck.empty(destination);
-  }
-
-
 }
 
 const deliverySystem = new Main();
