@@ -26,9 +26,18 @@ class Truck {
 
   unload(destination) {
     const destinationStorage = dataBase.depotsData.get(destination);
-    this.route = []; //deletes truck's route
-    for (const parcel of this.parcelStorage) {
-      destinationStorage.addParcel(parcel);
+    this.route.length = 0; //deletes truck's route
+    for (const parcelId of this.parcelStorage) {
+      const parcel = dataBase.parcelsData.get(parcelId);
+      parcel.route.shift();
+      destinationStorage.addParcel(parcelId);
+      if (parcel.route.length === 1) {
+        const deliveredParcelIndex = destinationStorage.parcels.indexOf(parcelId);
+        destinationStorage.parcels.splice(deliveredParcelIndex);
+        dataBase.parcelsData.delete(parcelId);
+        dataBase.deliveredParcels.push(parcelId);
+        console.log(`Parcel ${parcelId} has been delivered!`);
+      }
     }
     this.parcelStorage.length = 0;
   }
