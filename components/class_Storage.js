@@ -74,14 +74,18 @@ class Storage {
     }
   }
 
-  moveTruck(truckID) {
-    const truck = dataBase.trucksData.get(truckID);
-    const destinationID = truck.route[1];
-    const destination = dataBase.depotsData.get(destinationID);
-    this.removeTruck(truckID);
-    destination.trucks.push(truckID);
-    truck.unload(destinationID);
-    console.log(`truck ${truckID} moved to ${destinationID}`);
+  moveTruck(truckId) {
+    const truck = dataBase.trucksData.get(truckId);
+    const destinationId = truck.route[1];
+    const destination = dataBase.depotsData.get(destinationId);
+    this.removeTruck(truckId);
+    destination.trucks.push(truckId);
+    truck.unload(destinationId);
+    console.log(`truck ${truckId} moved to ${destinationId}`); //for testing
+    const destinationParcels = destination.parcels.slice();
+    for (const parcelId of destinationParcels.reverse()) {
+      destination.loadParcel(parcelId);
+    }
   }
 }
 
