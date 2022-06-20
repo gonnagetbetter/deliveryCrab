@@ -15,7 +15,7 @@ class Storage {
     if (!this.trucks.includes(id)) {
       this.trucks.push(id);
     } else {
-      console.log('This truck is already in this depot'); 
+      console.log('This truck is already in this depot');
       //should add proper error handling
     }
   }
@@ -26,7 +26,7 @@ class Storage {
     if (position !== -1) {
       this.trucks.splice(position, 1);
     } else {
-      console.log('This truck does not exist or is not in this depot'); 
+      console.log('This truck does not exist or is not in this depot');
       //should add proper error handling
     }
   }
@@ -35,7 +35,7 @@ class Storage {
     if (!this.parcels.includes(id)) {
       this.parcels.unshift(id);
     } else {
-      console.log('This parcel is already in this storage'); 
+      console.log('This parcel is already in this storage');
       //should add proper error handling
     }
   }
@@ -59,7 +59,7 @@ class Storage {
         suitableTruck = currentTruck;
         suitableTruckId = currentId;
       }
-      if (parcel.route[1] == currentTruck.route[1]) {
+      if (parcel.route[1] === currentTruck.route[1]) {
         suitableTruck = currentTruck;
         suitableTruckId = currentId;
       }
