@@ -4,33 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
     <title>DeliveryCrab</title>
   </head>
   <body>
-    <section class="info">
+    <div class="page">
       <div class="info-block">
-        <div class="info">Truck is on its way</div>
+        <div class="info-form"><span> This truck is on its way</span></div>
+        <div class="separator"></div>
+        <img class="map-img" src="./img/IMG_5337.PNG" alt="" />
       </div>
-    </section>
-    <section class="map"><img src="./img/IMG_5337.PNG" alt="" /></section>
-    <section class="forms">
-      <div class="upper-form">
-        <form action="">
+      <div class="forms">
+        <div class="upper-form">
+          <form action="">
+            <div>
+              <p>From:</p>
+              <input name="from" type="text" class="from-input input" />
+            </div>
+            <div>
+              <p>To:</p>
+              <input name="to" type="text" class="to-input input" />
+            </div>
+            <button class="send-btn btn">SEND</button>
+          </form>
+        </div>
+        <div class="bottom-form">
           <div>
-            <label>From:</label>
-            <input name="from" type="text" class="from-input" />
+            <input type="text" class="check-status-form input" />
           </div>
-          <div>
-            <label>To:</label>
-            <input name="to" type="text" class="to-input" />
-          </div>
-          <button class="send-btn">SEND</button>
-        </form>
+          <button class="check-status-btn btn">CHECK STATUS</button>
+        </div>
       </div>
-      <div class="bottom-form">
-          <input type="text" class="check-status-form">
-          <button class="check-status-btn">CHECK STATUS</button>
-      </div>
-    </section>
+    </div>
   </body>
 </html>
