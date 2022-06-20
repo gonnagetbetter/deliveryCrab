@@ -1,12 +1,12 @@
 'use strict';
 
-const dataBase = require('../DataBase/DataBase.js')
+const dataBase = require('../DataBase/DataBase.js');
 
 class Truck {
   constructor(capacity, velocity) {
     this.capacity = capacity;
     this.velocity = velocity;
-    this.status = "undefined"; 
+    this.status = 'undefined';
     this.route = [];
     this.parcelStorage = [];
   }
