@@ -1,8 +1,8 @@
 'use strict';
 
-const trucksData = new Map;
-const depotsData = new Map;
-const parcelsData = new Map;
+const trucksData = new Map();
+const depotsData = new Map();
+const parcelsData = new Map();
 const deliveredParcels = [];
 
 module.exports.trucksData = trucksData;
