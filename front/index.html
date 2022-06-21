@@ -6,33 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
     <title>DeliveryCrab</title>
+    <script defer src="./js/main.js"></script>
   </head>
   <body>
     <div class="page">
       <div class="info-block">
-        <div class="info-form"><span> This truck is on its way</span></div>
+        <div class="info-form" id="info-form"></div>
         <div class="separator"></div>
         <img class="map-img" src="./img/IMG_5337.PNG" alt="" />
       </div>
       <div class="forms">
         <div class="upper-form">
-          <form action="">
+          <form onsubmit="" id="form-data">
             <div>
               <p>From:</p>
-              <input name="from" type="text" class="from-input input" />
+              <input name="from" type="text" class="input" id="from-input" />
             </div>
             <div>
               <p>To:</p>
-              <input name="to" type="text" class="to-input input" />
+              <input name="to" type="text" class="input" id="to-input" />
             </div>
-            <button class="send-btn btn">SEND</button>
+            <button type="submit" class="send-btn btn">SEND</button>
           </form>
         </div>
         <div class="bottom-form">
-          <div>
-            <input type="text" class="check-status-form input" />
-          </div>
-          <button class="check-status-btn btn">CHECK STATUS</button>
+          <form action="" id="status-form">
+            <div>
+              <input type="text" class="input" id="status" />
+            </div>
+            <button type="submit" class="check-status-btn btn">
+              CHECK STATUS
+            </button>
+          </form>
         </div>
       </div>
     </div>
