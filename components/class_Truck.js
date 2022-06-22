@@ -9,6 +9,7 @@ class Truck {
     this.status = 'undefined';
     this.route = [];
     this.parcelStorage = [];
+    this.pathLength = 0;
   }
 
   addParcel(id) {
@@ -16,6 +17,7 @@ class Truck {
       if (this.parcelStorage.length === 0) {
         const parcel = dataBase.parcelsData.get(id);
         this.route = parcel.route.slice(0, 2);
+        this.calculatePathLenth(id);
       }
       this.parcelStorage.push(id);
       if (this.parcelStorage.length === this.capacity) {
@@ -40,6 +42,14 @@ class Truck {
       }
     }
     this.parcelStorage.length = 0;
+  }
+  calculatePathLenth(id) {
+    const origin = dataBase.depotsData.get(this.route[0]);
+    const destination = dataBase.depotsData.get(this.route[1]);
+    const xCoord = destination.xPos - origin.xPos;
+    const yCoord = destination.yPos - origin.yPos;
+    const pathLength = Math.pow((Math.pow(xCoord, 2) + Math.pow(yCoord, 2)), 0.5);
+    this.pathLength = pathLength;
   }
 }
 

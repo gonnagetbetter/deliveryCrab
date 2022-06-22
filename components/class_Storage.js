@@ -9,6 +9,7 @@ class Storage {
     this.name = name;
     this.trucks = []; //conatains trucks` IDs
     this.parcels = []; //contains parcels` IDs; works as a stack
+    this.pathLength = 0;
   }
 
   addTruck(id) {
@@ -79,13 +80,19 @@ class Storage {
     const destinationId = truck.route[1];
     const destination = dataBase.depotsData.get(destinationId);
     this.removeTruck(truckId);
-    destination.trucks.push(truckId);
-    truck.unload(destinationId);
-    console.log(`truck ${truckId} moved to ${destinationId}`); //for testing
-    const destinationParcels = destination.parcels.slice();
-    for (const parcelId of destinationParcels.reverse()) {
-      destination.loadParcel(parcelId);
-    }
+    const tickToSeconds = 1000;
+    const time = truck.pathLength / truck.velocity * tickToSeconds;
+    truck.status = 'En route';
+    setTimeout(() => {
+      destination.trucks.push(truckId);
+      truck.status = 'Waiting';
+      truck.unload(destinationId);
+      console.log(`truck ${truckId} moved to ${destinationId}`); //for testing
+      const destinationParcels = destination.parcels.slice();
+      for (const parcelId of destinationParcels.reverse()) {
+        destination.loadParcel(parcelId);
+      }
+    }, time);
   }
 }
 

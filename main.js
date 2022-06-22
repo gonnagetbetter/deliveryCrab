@@ -8,7 +8,7 @@ const dataBase = require('./DataBase/DataBase.js');
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 2; //standard truck capacity
-const VELOCITY = 60; //standard truck velocity
+const VELOCITY = 3; //standard truck velocity
 
 class Main {
   createDepot(name, x, y, type, hub = '') {
