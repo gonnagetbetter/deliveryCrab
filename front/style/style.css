@@ -5,7 +5,7 @@ body {
 .page {
   display: flex;
   width: 1200px;
-  height: 600px;
+  height: 500px;
   position: absolute;
   left: 50%;
   top: 50%;

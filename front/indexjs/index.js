@@ -1,3 +1,5 @@
+import { deliverySystem } from "../../main.js";
+console.log(deliverySystem);
 const form = document.getElementById("form-data");
 const data = document.getElementById("info-form");
 
