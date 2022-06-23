@@ -1,10 +1,10 @@
 'use strict';
 
-const Parcel = require('./components/class_Parcel.js');
-const Truck = require('./components/class_Truck');
-const Storage = require('./components/class_Storage');
-const idMaker = require('./components/ID_creator');
-const dataBase = require('./DataBase/DataBase.js');
+import { Parcel } from "./components/class_Parcel.js";
+import { Truck } from "./components/class_Truck.js";
+import { Storage } from "./components/class_Storage.js";
+import { idMaker } from './components/ID_creator.js';
+import { dataBase } from "./DataBase/DataBase.js";
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 2; //standard truck capacity
@@ -46,4 +46,4 @@ class Main {
 
 const deliverySystem = new Main();
 
-module.exports = deliverySystem;
+export { deliverySystem }

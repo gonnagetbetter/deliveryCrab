@@ -1,6 +1,6 @@
 'use strict';
 
-const dataBase = require('../DataBase/DataBase.js');
+import { dataBase } from '../DataBase/DataBase.js'
 
 class Truck {
   constructor(capacity, velocity) {
@@ -53,4 +53,4 @@ class Truck {
   }
 }
 
-module.exports = Truck;
+export { Truck };

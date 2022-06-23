@@ -1,6 +1,6 @@
 'use strict';
 
-const dataBase = require('../DataBase/DataBase.js');
+import { dataBase } from '../DataBase/DataBase.js'
 
 class Storage {
   constructor(xPos, yPos, name) {
@@ -96,4 +96,4 @@ class Storage {
   }
 }
 
-module.exports = Storage;
+export { Storage };

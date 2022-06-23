@@ -54,4 +54,5 @@ class IdProcessor {
 }
 
 const idMaker = new IdProcessor();
-module.exports = idMaker;
+
+export { idMaker };

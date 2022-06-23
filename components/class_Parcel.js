@@ -51,4 +51,4 @@ class Parcel {
   }
 }
 
-module.exports = Parcel;
+export { Parcel };
