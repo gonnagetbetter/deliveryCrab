@@ -23,6 +23,7 @@ class Truck {
       if (this.parcelStorage.length === this.capacity) {
         this.status = 'ready';
       }
+      console.log('parcel added to truck');
     }
   }
 
@@ -39,6 +40,7 @@ class Truck {
         dataBase.parcelsData.delete(parcelId);
         dataBase.deliveredParcels.push(parcelId);
         console.log(`Parcel ${parcelId} has been delivered!`);
+        console.log(dataBase.deliveredParcels);
       }
     }
     this.parcelStorage.length = 0;

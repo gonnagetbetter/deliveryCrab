@@ -40,7 +40,7 @@ const selectTo = document.getElementById("to-input");
 })(); //function to show the list of cities to user;
 
 const createUsersParcel = (origin, destination) => {
-  return deliverySystem.createParcel(origin, destination);
+  deliverySystem.createParcel(origin, destination);
 };
 
 const showCreatedParcel = () => {
@@ -66,7 +66,7 @@ createParcelForm.addEventListener("submit", (e) => {
   showCreatedParcel();
 });
 
-// ds.spawnTrucks(2);
+deliverySystem.spawnTrucks(2);
 
 // const origin = 'ra000a00';
 // const destination = 'ra001a03';
