@@ -1,69 +1,88 @@
 import { deliverySystem } from "../../main.js";
-console.log(deliverySystem);
-const form = document.getElementById("form-data");
-const data = document.getElementById("info-form");
+import { dataBase } from '../../DataBase/DataBase.js'
 
 const cities = {
-  kiyv: "kiyv",
-  zhitomir: "zhitomir",
-  lviv: "lviv",
-  kharkiv: "kharkiv",
-};
+  kiyv: 'Kiyv',
+  lviv: 'Lviv',
+  fastiv: 'Fastiv',
+  vasilkiv: 'Vasilkiv',
+  drohobych: 'Drohobych',
+  ravaRuska: 'Rava-Ruska',
+}
 
-const createList = () => {
+deliverySystem.createDepot(cities.kiyv, 50.45, 30.52, 1);
+deliverySystem.createDepot(cities.lviv, 49.83, 24.02, 1);
+deliverySystem.createDepot(cities.fastiv, 50.07, 29.91, 0, 'a000');
+deliverySystem.createDepot(cities.vasilkiv, 50.18, 30.31, 0, 'a000');
+deliverySystem.createDepot(cities.drohobych, 49.34, 23.50, 0, 'a001');
+deliverySystem.createDepot(cities.ravaRuska, 50.23, 23.62, 0, 'a001');
+
+console.log(dataBase.depotsData);
+
+const createParcelForm = document.getElementById('form-data');
+const status = document.getElementById('info-form');
+
+(() => {
   const fromList = document.getElementById("from-input");
   const toList = document.getElementById("to-input");
-  for (const city in cities) {
-    const optionTo = document.createElement("option", {
-      value: city,
-      id: city,
-    });
-    const optionFrom = document.createElement("option", {
-      value: city,
-      id: city,
-    });
-    optionTo.append(document.createTextNode(city));
-    optionFrom.append(document.createTextNode(city));
+  for (const [ID, cityInfo] of dataBase.depotsData){
+    const optionTo = document.createElement("option");
+    const optionFrom = document.createElement("option");
+    optionTo.text = cityInfo.name;
+    optionTo.value = ID;
+    optionFrom.text = cityInfo.name;
+    optionFrom.value = ID;
     fromList.appendChild(optionFrom);
     toList.appendChild(optionTo);
   }
-};
+})(); //function to show the list of cities to user;
 
-createList();
+const createUsersParcel = (origin, destination) => {
+  return deliverySystem.createParcel(origin, destination);
+}
+
 const showCreatedParcel = () => {
   const selectFrom = document.getElementById("from-input");
   const textFrom = selectFrom.options[selectFrom.selectedIndex].text;
   const selectedTo = document.getElementById("to-input");
   const textTo = selectedTo.options[selectedTo.selectedIndex].text;
-  const createdText = document.createElement("span", { id: "one" });
-  if (textFrom === textTo) {
-    alert("?????????????????????????????????");
-    return "";
-  }
+  const createdText = document.createElement("span");
+  // if (textFrom === textTo) {
+  //   alert("?????????????????????????????????");
+  //   return "";
+  // }
   createdText.append(
     document.createTextNode(
       `Parcel from ${textFrom} to ${textTo} has been created`
     )
   );
-  data.innerHTML = "";
-  data.appendChild(createdText);
+  status.innerHTML = "";
+  status.appendChild(createdText);
 };
 
-form.addEventListener("submit", (e) => {
+createParcelForm.addEventListener("submit", (e) => {
   e.preventDefault();
   showCreatedParcel();
 });
 
-const statusForm = document.getElementById("status-form");
+// ds.spawnTrucks(2);
 
-const func2 = () => {
-  let status = document.getElementById("status").value;
-  const node = document.createElement("span", { id: "one" });
-  node.append(document.createTextNode(status));
-  data.innerHTML = "";
-  data.appendChild(node);
-};
-statusForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  func2();
-});
+// const origin = 'ra000a00';
+// const destination = 'ra001a03';
+// ds.createParcel(origin, destination);
+// ds.createParcel(origin, destination);
+// ds.createParcel(origin, destination);
+
+// const statusForm = document.getElementById("status-form");
+
+// const func2 = () => {
+//   let status = document.getElementById("status").value;
+//   const node = document.createElement("span", { id: "one" });
+//   node.append(document.createTextNode(status));
+//   data.innerHTML = "";
+//   data.appendChild(node);
+// };
+// statusForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   func2();
+// });
