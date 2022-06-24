@@ -1,31 +1,33 @@
 import { deliverySystem } from "../../main.js";
-import { dataBase } from '../../DataBase/DataBase.js'
+import { dataBase } from "../../DataBase/DataBase.js";
 
 const cities = {
-  kiyv: 'Kiyv',
-  lviv: 'Lviv',
-  fastiv: 'Fastiv',
-  vasilkiv: 'Vasilkiv',
-  drohobych: 'Drohobych',
-  ravaRuska: 'Rava-Ruska',
-}
+  kiyv: "Kiyv",
+  lviv: "Lviv",
+  fastiv: "Fastiv",
+  vasilkiv: "Vasilkiv",
+  drohobych: "Drohobych",
+  ravaRuska: "Rava-Ruska",
+};
 
 deliverySystem.createDepot(cities.kiyv, 50.45, 30.52, 1);
 deliverySystem.createDepot(cities.lviv, 49.83, 24.02, 1);
-deliverySystem.createDepot(cities.fastiv, 50.07, 29.91, 0, 'a000');
-deliverySystem.createDepot(cities.vasilkiv, 50.18, 30.31, 0, 'a000');
-deliverySystem.createDepot(cities.drohobych, 49.34, 23.50, 0, 'a001');
-deliverySystem.createDepot(cities.ravaRuska, 50.23, 23.62, 0, 'a001');
+deliverySystem.createDepot(cities.fastiv, 50.07, 29.91, 0, "a000");
+deliverySystem.createDepot(cities.vasilkiv, 50.18, 30.31, 0, "a000");
+deliverySystem.createDepot(cities.drohobych, 49.34, 23.5, 0, "a001");
+deliverySystem.createDepot(cities.ravaRuska, 50.23, 23.62, 0, "a001");
 
 console.log(dataBase.depotsData);
 
-const createParcelForm = document.getElementById('form-data');
-const status = document.getElementById('info-form');
+const createParcelForm = document.getElementById("form-data");
+const status = document.getElementById("info-form");
+const selectFrom = document.getElementById("from-input");
+const selectTo = document.getElementById("to-input");
 
 (() => {
   const fromList = document.getElementById("from-input");
   const toList = document.getElementById("to-input");
-  for (const [ID, cityInfo] of dataBase.depotsData){
+  for (const [ID, cityInfo] of dataBase.depotsData) {
     const optionTo = document.createElement("option");
     const optionFrom = document.createElement("option");
     optionTo.text = cityInfo.name;
@@ -39,25 +41,24 @@ const status = document.getElementById('info-form');
 
 const createUsersParcel = (origin, destination) => {
   return deliverySystem.createParcel(origin, destination);
-}
+};
 
 const showCreatedParcel = () => {
-  const selectFrom = document.getElementById("from-input");
-  const textFrom = selectFrom.options[selectFrom.selectedIndex].text;
-  const selectedTo = document.getElementById("to-input");
-  const textTo = selectedTo.options[selectedTo.selectedIndex].text;
-  const createdText = document.createElement("span");
-  // if (textFrom === textTo) {
-  //   alert("?????????????????????????????????");
-  //   return "";
-  // }
-  createdText.append(
+  const selectedFrom = selectFrom.options[selectFrom.selectedIndex];
+  const selectedTo = selectTo.options[selectTo.selectedIndex];
+  const notification = document.createElement("span");
+  if (selectedFrom.value === selectedTo.value) {
+    alert("Select different cities");
+    return "";
+  }
+  notification.append(
     document.createTextNode(
-      `Parcel from ${textFrom} to ${textTo} has been created`
+      `Parcel from ${selectedFrom.text} to ${selectedTo.text} has been created`
     )
   );
+  createUsersParcel(selectFrom.value, selectTo.value);
   status.innerHTML = "";
-  status.appendChild(createdText);
+  status.appendChild(notification);
 };
 
 createParcelForm.addEventListener("submit", (e) => {
