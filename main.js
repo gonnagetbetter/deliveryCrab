@@ -7,7 +7,7 @@ import { idMaker } from './components/ID_creator.js';
 import { dataBase } from "./DataBase/DataBase.js";
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
-const CAPACITY = 2; //standard truck capacity
+const CAPACITY = 1; //standard truck capacity
 const VELOCITY = 3; //standard truck velocity
 
 class Main {
@@ -20,6 +20,8 @@ class Main {
   }
 
   createParcel(origin, destination) { //origin and destination must contain IDs
+    console.log(dataBase.trucksData);
+    console.log("created");
     const ID = idMaker.generateParcelId();
     const newParcel = new Parcel(origin, destination);
     newParcel.createRoute();

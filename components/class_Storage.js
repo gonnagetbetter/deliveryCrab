@@ -35,6 +35,7 @@ class Storage {
   addParcel(id) {
     if (!this.parcels.includes(id)) {
       this.parcels.unshift(id);
+      console.log('parcel added to storage');
     } else {
       console.log('This parcel is already in this storage');
       //should add proper error handling
@@ -51,6 +52,7 @@ class Storage {
   }
 
   loadParcel(id) {
+    console.log('loading parcel');
     const parcel = dataBase.parcelsData.get(id);
     let suitableTruck;
     let suitableTruckId;
@@ -65,11 +67,14 @@ class Storage {
         suitableTruckId = currentId;
       }
     }
-    if (suitableTruck) {
+    console.log(`truck chosen: ${suitableTruck}`);
+    if (suitableTruck) {  //
+      console.log('this isn`t an issue');
       suitableTruck.addParcel(id);
       this.parcels.splice(id);
       if (suitableTruck.status === 'ready') {
         suitableTruck.status = 'not ready';
+        console.log('truck ready to go');
         this.moveTruck(suitableTruckId);
       }
     }
@@ -93,6 +98,7 @@ class Storage {
         destination.loadParcel(parcelId);
       }
     }, time);
+    console.log('truck moved');
   }
 }
 
