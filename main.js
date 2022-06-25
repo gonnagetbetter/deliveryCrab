@@ -1,10 +1,10 @@
 'use strict';
 
-import { Parcel } from "./components/class_Parcel.js";
-import { Truck } from "./components/class_Truck.js";
-import { Storage } from "./components/class_Storage.js";
-import { idMaker } from './components/ID_creator.js';
-import { dataBase } from "./DataBase/DataBase.js";
+import { Parcel } from "./components/classParcel.js";
+import { Truck } from "./components/classTruck.js";
+import { Storage } from "./components/classStorage.js";
+import { idMaker } from './components/idCreator.js';
+import { dataBase } from "./database/dataBase.js";
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
 const CAPACITY = 1; //standard truck capacity
