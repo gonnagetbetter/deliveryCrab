@@ -37,10 +37,10 @@ class Truck {
       if (parcel.route.length === 1) {
         const deliveredParcelIndex = destinationStorage.parcels.indexOf(parcelId);
         destinationStorage.parcels.splice(deliveredParcelIndex);
-        dataBase.parcelsData.delete(parcelId);
+        // dataBase.parcelsData.delete(parcelId);
         dataBase.deliveredParcels.push(parcelId);
         console.log(`Parcel ${parcelId} has been delivered!`);
-        console.log(dataBase.deliveredParcels);
+        // console.log(dataBase.deliveredParcels);
       }
     }
     this.parcelStorage.length = 0;
