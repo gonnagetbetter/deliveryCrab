@@ -44,7 +44,13 @@ const createUsersParcel = (origin, destination) => {
   return deliverySystem.createParcel(origin, destination);
 };
 
-const showNotification = (notification) => {
+const showNotification = (notificationText) => {
+  const notification = document.createElement("span");
+  notification.append(
+    document.createTextNode(
+      `${notificationText}`
+    )
+  );
   info.innerHTML = "";
   info.appendChild(notification);
 }
@@ -52,19 +58,13 @@ const showNotification = (notification) => {
 const showCreatedParcel = () => {
   const selectedFrom = selectFrom.options[selectFrom.selectedIndex];
   const selectedTo = selectTo.options[selectTo.selectedIndex];
-  const notification = document.createElement("span");
   if (selectedFrom.value === selectedTo.value) {
     alert("Select different cities");
     return "";
   }
   const ID = createUsersParcel(selectFrom.value, selectTo.value);
-  notification.append(
-    document.createTextNode(
-      `Parcel from ${selectedFrom.text} to ${selectedTo.text} has been created;
-      ID: ${ID}`
-    )
-  );
-  showNotification(notification);
+  showNotification(`Parcel from ${selectedFrom.text} to ${selectedTo.text} has been created;
+  ID: ${ID}`);
 };
 
 createParcelForm.addEventListener("submit", (e) => {
@@ -75,42 +75,14 @@ createParcelForm.addEventListener("submit", (e) => {
 const showStatus = () => {
   const ID = document.getElementById('id-status').value;
   const parcel = dataBase.parcelsData.get(ID);
-  const notification = document.createElement("span");
-  notification.append(
-    document.createTextNode(
-      `${parcel.status}`
-    )
-  );
   if (!parcel) {
     alert('no such parcel');
     return '';
   }
-  console.log(parcel.status);
-  showNotification(notification);
+  showNotification(parcel.status);
 }
 
 statusForm.addEventListener("submit", (e) => {
   e.preventDefault();
   showStatus();
 })
-
-
-// const origin = 'ra000a00';
-// const destination = 'ra001a03';
-// ds.createParcel(origin, destination);
-// ds.createParcel(origin, destination);
-// ds.createParcel(origin, destination);
-
-// const statusForm = document.getElementById("status-form");
-
-// const func2 = () => {
-//   let status = document.getElementById("status").value;
-//   const node = document.createElement("span", { id: "one" });
-//   node.append(document.createTextNode(status));
-//   data.innerHTML = "";
-//   data.appendChild(node);
-// };
-// statusForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   func2();
-// });
