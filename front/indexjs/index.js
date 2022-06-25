@@ -1,5 +1,5 @@
 import { deliverySystem } from "../../main.js";
-import { dataBase } from "../../DataBase/DataBase.js";
+import { dataBase } from "../../database/dataBase.js";
 
 const cities = {
   kiyv: "Kiyv",

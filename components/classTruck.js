@@ -1,6 +1,6 @@
 'use strict';
 
-import { dataBase } from '../DataBase/DataBase.js'
+import { dataBase } from '../database/dataBase.js'
 
 class Truck {
   constructor(capacity, velocity) {
