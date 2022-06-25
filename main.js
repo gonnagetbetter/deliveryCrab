@@ -5,10 +5,9 @@ import { Truck } from "./components/classTruck.js";
 import { Storage } from "./components/classStorage.js";
 import { idMaker } from './components/idCreator.js';
 import { dataBase } from "./database/dataBase.js";
+import { CAPACITY, VELOCITY } from "./config.js";
 
 const randInt = (min, max) => Math.random() * (max - min) + min;
-const CAPACITY = 1; //standard truck capacity
-const VELOCITY = 3; //standard truck velocity
 
 class Main {
   createDepot(name, x, y, type, hub = '') {

@@ -1,14 +1,6 @@
 import { deliverySystem } from "../../main.js";
 import { dataBase } from "../../database/dataBase.js";
-
-const cities = {
-  kiyv: "Kiyv",
-  lviv: "Lviv",
-  fastiv: "Fastiv",
-  vasilkiv: "Vasilkiv",
-  drohobych: "Drohobych",
-  ravaRuska: "Rava-Ruska",
-};
+import { cities } from "../../config.js";
 
 deliverySystem.createDepot(cities.kiyv, 50.45, 30.52, 1);
 deliverySystem.createDepot(cities.lviv, 49.83, 24.02, 1);

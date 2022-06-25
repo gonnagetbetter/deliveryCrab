@@ -2,13 +2,15 @@
 
 import { deliverySystem } from "./main.js";
 import { dataBase } from "./database/dataBase.js";
+import { cities } from "./config.js";
 
-deliverySystem.createDepot('Kyiv', 50.45, 30.52, 1);
-deliverySystem.createDepot('Lviv', 49.83, 24.02, 1);
-deliverySystem.createDepot('Fastiv', 50.07, 29.91, 0, 'a000');
-deliverySystem.createDepot('Vasilkiv', 50.18, 30.31, 0, 'a000');
-deliverySystem.createDepot('Drohobych', 49.34, 23.50, 0, 'a001');
-deliverySystem.createDepot('Rava-Ruska', 50.23, 23.62, 0, 'a001');
+deliverySystem.createDepot(cities.kiyv, 50.45, 30.52, 1);
+deliverySystem.createDepot(cities.lviv, 49.83, 24.02, 1);
+deliverySystem.createDepot(cities.fastiv, 50.07, 29.91, 0, "a000");
+deliverySystem.createDepot(cities.vasilkiv, 50.18, 30.31, 0, "a000");
+deliverySystem.createDepot(cities.drohobych, 49.34, 23.5, 0, "a001");
+deliverySystem.createDepot(cities.ravaRuska, 50.23, 23.62, 0, "a001");
+
 deliverySystem.spawnTrucks(2);
 
 const origin = 'ra000a00';
