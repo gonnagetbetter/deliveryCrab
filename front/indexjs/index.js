@@ -43,6 +43,11 @@ const createUsersParcel = (origin, destination) => {
   return deliverySystem.createParcel(origin, destination);
 };
 
+const showNotification = (notification) => {
+  status.innerHTML = "";
+  status.appendChild(notification);
+}
+
 const showCreatedParcel = () => {
   const selectedFrom = selectFrom.options[selectFrom.selectedIndex];
   const selectedTo = selectTo.options[selectTo.selectedIndex];
@@ -58,9 +63,7 @@ const showCreatedParcel = () => {
       ID: ${ID}`
     )
   );
-  console.log(ID)
-  status.innerHTML = "";
-  status.appendChild(notification);
+  showNotification(notification);
 };
 
 createParcelForm.addEventListener("submit", (e) => {
