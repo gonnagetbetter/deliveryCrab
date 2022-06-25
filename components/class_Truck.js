@@ -39,6 +39,7 @@ class Truck {
         destinationStorage.parcels.splice(deliveredParcelIndex);
         // dataBase.parcelsData.delete(parcelId);
         dataBase.deliveredParcels.push(parcelId);
+        parcel.setStatus('delivered!')
         console.log(`Parcel ${parcelId} has been delivered!`);
         // console.log(dataBase.deliveredParcels);
       }
