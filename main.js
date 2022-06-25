@@ -29,6 +29,7 @@ class Main {
     const originStorage = dataBase.depotsData.get(origin);
     originStorage.addParcel(ID);
     originStorage.loadParcel(ID);
+    return ID;
   }
 
   spawnTrucks(trucksMax) {
