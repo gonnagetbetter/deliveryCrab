@@ -17,12 +17,13 @@ deliverySystem.createDepot(cities.vasilkiv, 50.18, 30.31, 0, "a000");
 deliverySystem.createDepot(cities.drohobych, 49.34, 23.5, 0, "a001");
 deliverySystem.createDepot(cities.ravaRuska, 50.23, 23.62, 0, "a001");
 
-console.log(dataBase.depotsData);
+deliverySystem.spawnTrucks(2);
 
 const createParcelForm = document.getElementById("form-data");
-const status = document.getElementById("info-form");
+const info = document.getElementById("info-form");
 const selectFrom = document.getElementById("from-input");
 const selectTo = document.getElementById("to-input");
+const statusForm = document.getElementById("status-form");
 
 (() => {
   const fromList = document.getElementById("from-input");
@@ -44,8 +45,8 @@ const createUsersParcel = (origin, destination) => {
 };
 
 const showNotification = (notification) => {
-  status.innerHTML = "";
-  status.appendChild(notification);
+  info.innerHTML = "";
+  info.appendChild(notification);
 }
 
 const showCreatedParcel = () => {
@@ -71,7 +72,28 @@ createParcelForm.addEventListener("submit", (e) => {
   showCreatedParcel();
 });
 
-deliverySystem.spawnTrucks(2);
+const showStatus = () => {
+  const ID = document.getElementById('id-status').value;
+  const parcel = dataBase.parcelsData.get(ID);
+  const notification = document.createElement("span");
+  notification.append(
+    document.createTextNode(
+      `${parcel.status}`
+    )
+  );
+  if (!parcel) {
+    alert('no such parcel');
+    return '';
+  }
+  console.log(parcel.status);
+  showNotification(notification);
+}
+
+statusForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  showStatus();
+})
+
 
 // const origin = 'ra000a00';
 // const destination = 'ra001a03';
