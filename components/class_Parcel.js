@@ -45,10 +45,6 @@ class Parcel {
   setStatus(value) {
     this.status = value;
   }
-
-  getInfo() {
-    return `ID:${this.id}, Status:${this.status}`;
-  }
 }
 
 export { Parcel };
