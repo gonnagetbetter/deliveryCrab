@@ -1,6 +1,6 @@
 'use strict';
 
-import { dataBase } from '../database/dataBase.js'
+import { dataBase } from '../database/dataBase.js';
 
 class Truck {
   constructor(capacity, velocity) {
@@ -20,6 +20,8 @@ class Truck {
         this.calculatePathLenth(id);
       }
       this.parcelStorage.push(id);
+      const parcel = dataBase.parcelsData.get(id);
+      parcel.status = 'inTruck';
       if (this.parcelStorage.length === this.capacity) {
         this.status = 'ready';
       }
@@ -37,16 +39,15 @@ class Truck {
       if (parcel.route.length === 1) {
         const deliveredParcelIndex = destinationStorage.parcels.indexOf(parcelId);
         destinationStorage.parcels.splice(deliveredParcelIndex);
-        // dataBase.parcelsData.delete(parcelId);
         dataBase.deliveredParcels.push(parcelId);
-        parcel.setStatus('delivered!')
+        parcel.status = 'delivered';
         console.log(`Parcel ${parcelId} has been delivered!`);
-        // console.log(dataBase.deliveredParcels);
       }
     }
     this.parcelStorage.length = 0;
   }
-  calculatePathLenth(id) {
+
+  calculatePathLenth() {
     const origin = dataBase.depotsData.get(this.route[0]);
     const destination = dataBase.depotsData.get(this.route[1]);
     const xCoord = destination.xPos - origin.xPos;
