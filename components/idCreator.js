@@ -6,22 +6,23 @@ class IdProcessor {
     this.nextHub = 'a000';
     this.nextStorage = 'a00';
     this.nextParsel = 'aa000';
-    this.idIncrement = (array, index = array.length - 1) => {
-      let nextSymbol;
-      if (array[index] === 'z') {
-        nextSymbol = 'a';
-        array.splice(index, 1, nextSymbol);
-        this.idIncrement(array, index - 1);
-      } else if (array[index] === '9') {
-        nextSymbol = '0';
-        array.splice(index, 1, nextSymbol);
-        this.idIncrement(array, index - 1);
-      } else {
-        nextSymbol = String.fromCharCode(array[index].charCodeAt(0) + 1);
-        array.splice(index, 1, nextSymbol);
-      }
-      return array.join('');
+  }
+
+  idIncrement(array, index = array.length - 1) {
+    let nextSymbol;
+    if (array[index] === 'z') {
+      nextSymbol = 'a';
+      array.splice(index, 1, nextSymbol);
+      this.idIncrement(array, index - 1);
+    } else if (array[index] === '9') {
+      nextSymbol = '0';
+      array.splice(index, 1, nextSymbol);
+      this.idIncrement(array, index - 1);
+    } else {
+      nextSymbol = String.fromCharCode(array[index].charCodeAt(0) + 1);
+      array.splice(index, 1, nextSymbol);
     };
+    return array.join('');
   }
 
   generateParcelId() {
