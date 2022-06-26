@@ -23,7 +23,6 @@ class Storage {
 
   removeTruck(id) {
     const position = this.trucks.indexOf(id);
-    console.log(position);
     if (position !== -1) {
       this.trucks.splice(position, 1);
     } else {
@@ -35,6 +34,8 @@ class Storage {
   addParcel(id) {
     if (!this.parcels.includes(id)) {
       this.parcels.unshift(id);
+      const parcel = dataBase.parcelsData.get(id);
+      parcel.status = 'waiting';
       console.log('parcel added to storage');
     } else {
       console.log('This parcel is already in this storage');
@@ -52,7 +53,6 @@ class Storage {
   }
 
   loadParcel(id) {
-    console.log('loading parcel');
     const parcel = dataBase.parcelsData.get(id);
     let suitableTruck;
     let suitableTruckId;
@@ -67,14 +67,11 @@ class Storage {
         suitableTruckId = currentId;
       }
     }
-    console.log(`truck chosen: ${suitableTruck}`);
-    if (suitableTruck) {  //
-      console.log('this isn`t an issue');
+    if (suitableTruck) {
       suitableTruck.addParcel(id);
       this.parcels.splice(id);
       if (suitableTruck.status === 'ready') {
         suitableTruck.status = 'not ready';
-        console.log('truck ready to go');
         this.moveTruck(suitableTruckId);
       }
     }
@@ -84,21 +81,23 @@ class Storage {
     const truck = dataBase.trucksData.get(truckId);
     const destinationId = truck.route[1];
     const destination = dataBase.depotsData.get(destinationId);
-    this.removeTruck(truckId);
     const tickToSeconds = 1000;
     const time = truck.pathLength / truck.velocity * tickToSeconds;
     truck.status = 'En route';
+    this.removeTruck(truckId);
+    for (const parcelId of this.parcels) {
+      const parcel = dataBase.parcelsData.get(parcelId);
+      parcel.status = 'mowing';
+    }
     setTimeout(() => {
       destination.trucks.push(truckId);
       truck.status = 'Waiting';
       truck.unload(destinationId);
-      console.log(`truck ${truckId} moved to ${destinationId}`); //for testing
       const destinationParcels = destination.parcels.slice();
       for (const parcelId of destinationParcels.reverse()) {
         destination.loadParcel(parcelId);
       }
     }, time);
-    console.log('truck moved');
   }
 }
 
