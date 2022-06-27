@@ -1,4 +1,4 @@
-const CAPACITY = 1; //standard truck capacity
+const CAPACITY = 3; //standard truck capacity
 
 const VELOCITY = 3; //standard truck velocity
 
