@@ -10,28 +10,26 @@ class Parcel {
   }
 
   createRoute() {
-    const orig = this.origin;
-    const dest = this.dest;
     const route = [];
-    if (orig === dest) {
+    if (this.origin === this.dest) {
       console.log('Origin and destination are the same!');
     } else {
-      const originHub = 'h' + orig.slice(1, 5);
-      const destHub = 'h' + dest.slice(1, 5);
+      const originHub = 'h' + this.origin.slice(1, 5);
+      const destHub = 'h' + this.dest.slice(1, 5);
       if (originHub === destHub) {
-        route.push(orig, dest);
+        route.push(this.origin, this.dest);
       } else {
-        if (orig[0] === 'r') {
-          route.push(orig);
+        if (this.origin[0] === 'r') {
+          route.push(this.origin);
           route.push(originHub);
         } else {
-          route.push(orig);
+          route.push(this.origin);
         }
-        if (dest[0] === 'r') {
+        if (this.dest[0] === 'r') {
           route.push(destHub);
-          route.push(dest);
+          route.push(this.dest);
         } else {
-          route.push(dest);
+          route.push(this.dest);
         }
       }
     }
