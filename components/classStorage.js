@@ -78,7 +78,11 @@ class Storage {
   }
 
   moveTruck(truckId) {
-    const truck = dataBase.trucksData.get(truckId);
+    const waitTillArive = sec => new Promise(resolve =>{
+      setTimeout(resolve, sec)
+    });
+    (async() => {
+      const truck = dataBase.trucksData.get(truckId);
     const destinationId = truck.route[1];
     const destination = dataBase.depotsData.get(destinationId);
     const tickToSeconds = 1000;
@@ -89,15 +93,15 @@ class Storage {
       const parcel = dataBase.parcelsData.get(parcelId);
       parcel.status = 'mowing';
     }
-    setTimeout(() => {
+     await waitTillArive(time);
       destination.trucks.push(truckId);
       truck.status = 'Waiting';
       truck.unload(destinationId);
       const destinationParcels = destination.parcels.slice();
       for (const parcelId of destinationParcels.reverse()) {
         destination.loadParcel(parcelId);
-      }
-    }, time);
+    }
+  })();
   }
 }
 
