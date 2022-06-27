@@ -19,8 +19,7 @@ class Main {
   }
 
   createParcel(origin, destination) { //origin and destination must contain IDs
-    console.log(dataBase.trucksData);
-    console.log("created");
+    console.log("Created a parcel");
     const ID = idMaker.generateParcelId();
     const newParcel = new Parcel(origin, destination);
     newParcel.createRoute();
@@ -28,14 +27,13 @@ class Main {
     const originStorage = dataBase.depotsData.get(origin);
     originStorage.addParcel(ID);
     originStorage.loadParcel(ID);
-    return ID;
   }
 
   spawnTrucks(trucksMax) {
     for (const depotId of dataBase.depotsData.keys()) {
       const depot = dataBase.depotsData.get(depotId);
       const quantity = randInt(0, trucksMax);
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < quantity; i++) {
         //it now spawns one truck in every depot. i < quantity - release version
         const truck = new Truck(CAPACITY, VELOCITY, 'some dest');
         const id = idMaker.generateTruckId();
