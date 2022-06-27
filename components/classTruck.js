@@ -13,7 +13,9 @@ class Truck {
   }
 
   addParcel(id) {
-    if (!this.parcelStorage.includes(id) && this.parcelStorage.length < this.capacity) {
+    if (!this.parcelStorage.includes(id) && 
+    this.parcelStorage.length < this.capacity
+    ) {
       if (this.parcelStorage.length === 0) {
         const parcel = dataBase.parcelsData.get(id);
         this.route = parcel.route.slice(0, 2);
