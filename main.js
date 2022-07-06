@@ -26,7 +26,8 @@ class Main {
     dataBase.parcelsData.set(ID, newParcel);
     const originStorage = dataBase.depotsData.get(origin);
     originStorage.addParcel(ID);
-    originStorage.loadParcel(ID);
+    originStorage.loadParcel(ID); 
+    return ID;
   }
 
   spawnTrucks(trucksMax) {
